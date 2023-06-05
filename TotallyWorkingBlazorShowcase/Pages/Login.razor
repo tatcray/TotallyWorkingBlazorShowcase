@@ -1,0 +1,34 @@
+﻿@page "/login"
+@inject LoginModel LoginModel
+
+<h3>Login</h3>
+
+<EditForm Model="LoginModel.Input" OnValidSubmit="LoginModel.UserExistsAsync">
+    <DataAnnotationsValidator />
+
+    <div>
+        <label>UserName:</label>
+        <InputText id="Email" @bind-Value="LoginModel.Input.UserName" />
+        <ValidationMessage For="@(() => LoginModel.Input.UserName)" />
+    </div>
+
+    <div>
+        <label>Password:</label>
+        <InputText id="Password" type="password" @bind-Value="LoginModel.Input.Password" />
+        <ValidationMessage For="@(() => LoginModel.Input.Password)" />
+    </div>
+
+    <div>
+        <label>
+            <InputCheckbox id="RememberMe" @bind-Value="LoginModel.Input.RememberMe" />
+            Remember me?
+        </label>
+    </div>
+
+    <button type="submit">Login</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(LoginModel.ErrorMessage))
+{
+    <p>@LoginModel.ErrorMessage</p>
+}

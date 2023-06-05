@@ -1,0 +1,68 @@
+﻿@*@page "/"
+@inherits RegisterModel
+
+<h2>Register</h2>
+
+@code
+{
+    private RegisterModel _registerModel = new();
+}
+<EditForm Model="_registerModel" method="post" OnValidSubmit="OnPostAsync">
+    <div>
+        <label asp-for="Input.UserName"></label>
+        <input asp-for="Input.UserName"/>
+        <span asp-validation-for="Input.Email"></span>
+    </div>
+    <div>
+        <label asp-for="Input.Password"></label>
+        <input asp-for="Input.Password" />
+        <span asp-validation-for="Input.Password"></span>
+    </div>
+    <div>
+        <label asp-for="Input.ConfirmPassword"></label>
+        <input asp-for="Input.ConfirmPassword" />
+        <span asp-validation-for="Input.ConfirmPassword"></span>
+    </div>
+    <button type="submit">Register</button>
+</EditForm>
+
+<p>
+    У вас уже есть учетная запись?
+    <a href="/login">Войти</a>
+</p>*@
+
+@page "/"
+@inherits RegistrationModelBase
+
+<EditForm Model="@RegisterModel" method="post" OnValidSubmit="RegistrationUser">
+    <div class="form-group row">
+        <div class="col">
+        <label for="UserName">UserName:</label>
+        <InputText id="Email" @bind-Value="RegisterModel.UserName"/>
+        <ValidationMessage For="@(() => RegisterModel.UserName)" />
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="col">
+        <label for="Password">Password:</label>
+        <InputText id="Password" type="password" @bind-Value="RegisterModel.Password"/>
+        <ValidationMessage For="@(() => RegisterModel.Password)" />
+        </div>
+    </div>
+        
+        <div class="form-group row">
+            <label class="control-label col-md-12">Confirm Password</label>
+            <div class="col">
+                <InputText type="password" class="form-control" @bind-Value="RegisterModel.ConfirmPassword"></InputText>
+                <ValidationMessage For="@(() => RegisterModel.ConfirmPassword)" />
+            </div>
+        </div>
+    <button type="submit">Зарегистрироваться</button>
+</EditForm>
+
+<p>
+    У вас уже есть учетная запись?
+    <a href="/login">Войти</a>
+</p>
+
