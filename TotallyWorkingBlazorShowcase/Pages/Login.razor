@@ -1,32 +1,49 @@
 ﻿@page "/login"
+@using TotallyWorkingBlazorShowcase.Pages
 @inject LoginModel LoginModel
+<link href="css/componentsStyle/Buttons.css" rel="stylesheet">
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">
+<link href="css/componentsStyle/DefaultMargin.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/LoginWindow.css" rel="stylesheet">
 
-<h3>Login</h3>
 
-<EditForm Model="LoginModel.Input" OnValidSubmit="LoginModel.UserExistsAsync">
-    <DataAnnotationsValidator />
+<img src="css/Svg/Logo.svg" class="Logo" alt="Logo">
+<img src="css/Svg/EllipseShutDown.svg" class="Ellipse0" alt="Decor">
+<img src="css/Svg/EllipseShutDown.svg" class="Ellipse1" alt="Decor">
+<img src="css/Svg/Fish0.svg" class="Kit" alt="Fish">
 
-    <div>
-        <label>UserName:</label>
-        <InputText id="Email" @bind-Value="LoginModel.Input.UserName" />
-        <ValidationMessage For="@(() => LoginModel.Input.UserName)" />
-    </div>
+<div class="LightBackground">
+    <header class="BaseTxt HeaderTxt">Вход</header>
+    <EditForm class="Mr_tb_32 LoginEditForm" Model="LoginModel.Input" OnValidSubmit="LoginModel.UserExistsAsync">
+        <DataAnnotationsValidator/>
+        <div class="form-group Mr_b_24 col">
+            <label class="BaseTxt RegularGrayTxt Mr_b_12">Имя или e-mail:</label>
+            <InputText class="form-control BaseInput" @bind-Value="LoginModel.Input.UserName" placeholder="Иван Иванов"/>
+            <ValidationMessage For="@(() => LoginModel.Input.UserName)"/>
+        </div>
 
-    <div>
-        <label>Password:</label>
-        <InputText id="Password" type="password" @bind-Value="LoginModel.Input.Password" />
-        <ValidationMessage For="@(() => LoginModel.Input.Password)" />
-    </div>
+        <div class="form-group Mr_b_24 col">
+            <label class="BaseTxt RegularGrayTxt Mr_b_12">Пароль:</label>
+            <InputText class="form-control BaseInput" type="password" @bind-Value="LoginModel.Input.Password" placeholder="Введите пароль повторно"/>
+            <ValidationMessage For="@(() => LoginModel.Input.Password)"/>
+        </div>
 
-    <div>
-        <label>
-            <InputCheckbox id="RememberMe" @bind-Value="LoginModel.Input.RememberMe" />
-            Remember me?
-        </label>
-    </div>
+        <div class="form-group col Mr_b_24">
+            <label class="BaseTxt RegularGrayTxt">
+                <InputCheckbox id="RememberMe" @bind-Value="LoginModel.Input.RememberMe" class="CheckBox"/> @*ToDo: вынести чекбокс в отдельный ккомпонент стилей*@
+                Запомнить меня?
+            </label>
+        </div>
 
-    <button type="submit">Login</button>
-</EditForm>
+        <button type="submit" class="ButtonBase BlueButton">Войти</button>
+    </EditForm>
+
+    <p class="BaseTxt ClueTxt">
+        У Вас нет аккаунта?
+        <a href="/" class="BaseTxt BlueBoldTxt">Зарегистрироваться</a>
+    </p>
+</div>
 
 @if (!string.IsNullOrEmpty(LoginModel.ErrorMessage))
 {

@@ -1,68 +1,44 @@
-﻿@*@page "/"
-@inherits RegisterModel
-
-<h2>Register</h2>
-
-@code
-{
-    private RegisterModel _registerModel = new();
-}
-<EditForm Model="_registerModel" method="post" OnValidSubmit="OnPostAsync">
-    <div>
-        <label asp-for="Input.UserName"></label>
-        <input asp-for="Input.UserName"/>
-        <span asp-validation-for="Input.Email"></span>
+﻿@page "/"
+@inherits TotallyWorkingBlazorShowcase.Pages.RegistrationModelBase
+<link href="css/componentsStyle/Buttons.css" rel="stylesheet">
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">
+<link href="css/componentsStyle/DefaultMargin.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/RegisterWindow.css" rel="stylesheet">
+<div class="Row">
+    <div class="BlueBackground">
+        <img src="css/Svg/Logo.svg" class="Logo" alt="Logo">
+        <img src="css/Svg/EllipseShutDown.svg" class="Ellipse0" alt="Decor">
+        <img src="css/Svg/EllipseShutDown.svg" class="Ellipse1" alt="Decor">
     </div>
-    <div>
-        <label asp-for="Input.Password"></label>
-        <input asp-for="Input.Password" />
-        <span asp-validation-for="Input.Password"></span>
-    </div>
-    <div>
-        <label asp-for="Input.ConfirmPassword"></label>
-        <input asp-for="Input.ConfirmPassword" />
-        <span asp-validation-for="Input.ConfirmPassword"></span>
-    </div>
-    <button type="submit">Register</button>
-</EditForm>
-
-<p>
-    У вас уже есть учетная запись?
-    <a href="/login">Войти</a>
-</p>*@
-
-@page "/"
-@inherits RegistrationModelBase
-
-<EditForm Model="@RegisterModel" method="post" OnValidSubmit="RegistrationUser">
-    <div class="form-group row">
-        <div class="col">
-        <label for="UserName">UserName:</label>
-        <InputText id="Email" @bind-Value="RegisterModel.UserName"/>
-        <ValidationMessage For="@(() => RegisterModel.UserName)" />
-        </div>
-    </div>
-    
-    <div class="form-group row">
-        <div class="col">
-        <label for="Password">Password:</label>
-        <InputText id="Password" type="password" @bind-Value="RegisterModel.Password"/>
-        <ValidationMessage For="@(() => RegisterModel.Password)" />
-        </div>
-    </div>
-        
-        <div class="form-group row">
-            <label class="control-label col-md-12">Confirm Password</label>
-            <div class="col">
-                <InputText type="password" class="form-control" @bind-Value="RegisterModel.ConfirmPassword"></InputText>
-                <ValidationMessage For="@(() => RegisterModel.ConfirmPassword)" />
+    <img src="css/Svg/Fish.svg" class="Kit" alt="Fish">
+    <div class="RegisterForm">
+        <header class="BaseTxt HeaderTxt">Регистрация</header>
+        <EditForm Model="@RegisterModel" class="Mr_tb_32" method="post" OnValidSubmit="RegistrationUser">
+            <div class="form-group Mr_b_24 col">
+                <label for="UserName" class="BaseTxt RegularGrayTxt Mr_b_12">Имя или e-mail:</label>
+                <InputText id="Email" class="form-control BaseInput" @bind-Value="RegisterModel.UserName" placeholder="Иван Иванов"/>
+                <ValidationMessage For="@(() => RegisterModel.UserName)"/>
             </div>
-        </div>
-    <button type="submit">Зарегистрироваться</button>
-</EditForm>
 
-<p>
-    У вас уже есть учетная запись?
-    <a href="/login">Войти</a>
-</p>
+            <div class="form-group Mr_b_24 col">
+                <label for="Password" class="BaseTxt RegularGrayTxt Mr_b_12">Пароль:</label>
+                <InputText id="Password" type="password" class="form-control BaseInput" @bind-Value="RegisterModel.Password" placeholder="Придумайте пароль"/>
+                <ValidationMessage For="@(() => RegisterModel.Password)"/>
+            </div>
+
+            <div class="form-group Mr_b_24 col">
+                <label class="BaseTxt RegularGrayTxt Mr_b_12">Повторите пароль:</label>
+                <InputText type="password" class="form-control BaseInput" @bind-Value="RegisterModel.ConfirmPassword" placeholder="Введите пароль повторно"></InputText>
+                <ValidationMessage For="@(() => RegisterModel.ConfirmPassword)"/>
+            </div>
+        </EditForm>
+        <button type="submit" class="ButtonBase BlueButton Mr_b_24">Создать аккаунт</button>
+        <button class="ButtonBase LightBlueButton Mr_b_24">Продолжить с Google</button>
+        <p class="BaseTxt ClueTxt">
+            У вас уже есть учетная запись?
+            <a href="/login" class="BaseTxt BlueBoldTxt">Войти</a>
+        </p>
+    </div>
+</div>
 

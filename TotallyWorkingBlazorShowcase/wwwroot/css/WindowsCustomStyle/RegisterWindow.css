@@ -1,0 +1,79 @@
+body {
+    overflow: hidden;
+    background-color: #F5F6FC;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Row > div {
+    flex: 50%;
+}
+
+.BlueBackground {
+    overflow: hidden;
+    transform: translateX(-40px);
+    margin: -20px 0 0 0;
+    height: 100vh;
+    max-width: 30%;
+    background: #284A74
+}
+
+.Ellipse0 {
+    position: absolute;
+    opacity: 60%;
+    width: 560px;
+    height: 560px;
+    transform: translateX(160px) translateY(-160px);
+    horiz-align: right;
+    vertical-align: bottom;
+    z-index: 1;
+}
+
+.Ellipse1 {
+    position: absolute;
+    opacity: 60%;
+    width: 560px;
+    height: 560px;
+    transform: translateX(-140px) translateY(560px);
+    horiz-align: left;
+    vertical-align: hanging;
+    z-index: 1;
+}
+
+.Kit {
+    margin: -30vh 0 0 -30vw;
+    position: absolute;
+    width: auto;
+    height: 147vh;
+}
+
+
+.RegisterForm {
+    z-index: 3;
+    horiz-align: center;
+    max-width: 420px;
+    margin: 160px 0 0 270px;
+    height: auto;
+    
+}
+
+.Logo {
+    z-index: 3;
+    position: absolute;
+    horiz-align: left;
+    vertical-align: top;
+    margin: 37px 0 0 57px;
+    text-shadow: 0 0 15px #193454;
+}
+
+/*
+.LightBackground {
+    horiz-align: right;
+    background: #F5F6FC;
+    height: 100vh;
+    width: 60vw;
+}*/
