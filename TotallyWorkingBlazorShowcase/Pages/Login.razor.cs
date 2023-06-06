@@ -11,7 +11,8 @@ namespace TotallyWorkingBlazorShowcase.Pages
         private AppDbContext _context { get; set; }
         public string ErrorMessage { get; set; }
 
-        [Inject] private NavigationManager _navigationManager { get; set; }
+        [Inject]
+        private NavigationManager _navigationManager { get; set; }
 
         public async void UserExistsAsync()
         {

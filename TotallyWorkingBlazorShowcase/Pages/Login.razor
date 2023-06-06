@@ -1,6 +1,6 @@
 ﻿@page "/login"
-@using TotallyWorkingBlazorShowcase.Pages
-@inject LoginModel LoginModel
+@inherits TotallyWorkingBlazorShowcase.Pages.LoginModel
+
 <link href="css/componentsStyle/Buttons.css" rel="stylesheet">
 <link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
 <link href="css/componentsStyle/Inputs.css" rel="stylesheet">
@@ -15,23 +15,23 @@
 
 <div class="LightBackground">
     <header class="BaseTxt HeaderTxt">Вход</header>
-    <EditForm class="Mr_tb_32 LoginEditForm" Model="LoginModel.Input" OnValidSubmit="LoginModel.UserExistsAsync">
+    <EditForm class="Mr_tb_32 LoginEditForm" Model="Input" OnValidSubmit="UserExistsAsync">
         <DataAnnotationsValidator/>
         <div class="form-group Mr_b_24 col">
             <label class="BaseTxt RegularGrayTxt Mr_b_12">Имя или e-mail:</label>
-            <InputText class="form-control BaseInput" @bind-Value="LoginModel.Input.UserName" placeholder="Иван Иванов"/>
-            <ValidationMessage For="@(() => LoginModel.Input.UserName)"/>
+            <InputText class="form-control BaseInput" @bind-Value="Input.UserName" placeholder="Иван Иванов"/>
+            <ValidationMessage For="@(() => Input.UserName)"/>
         </div>
 
         <div class="form-group Mr_b_24 col">
             <label class="BaseTxt RegularGrayTxt Mr_b_12">Пароль:</label>
-            <InputText class="form-control BaseInput" type="password" @bind-Value="LoginModel.Input.Password" placeholder="Введите пароль повторно"/>
-            <ValidationMessage For="@(() => LoginModel.Input.Password)"/>
+            <InputText class="form-control BaseInput" type="password" @bind-Value="Input.Password" placeholder="Введите пароль повторно"/>
+            <ValidationMessage For="@(() => Input.Password)"/>
         </div>
 
         <div class="form-group col Mr_b_24">
             <label class="BaseTxt RegularGrayTxt">
-                <InputCheckbox id="RememberMe" @bind-Value="LoginModel.Input.RememberMe" class="CheckBox"/> @*ToDo: вынести чекбокс в отдельный ккомпонент стилей*@
+                <InputCheckbox id="RememberMe" @bind-Value="Input.RememberMe" class="CheckBox"/> @*ToDo: вынести чекбокс в отдельный ккомпонент стилей*@
                 Запомнить меня?
             </label>
         </div>
@@ -45,7 +45,7 @@
     </p>
 </div>
 
-@if (!string.IsNullOrEmpty(LoginModel.ErrorMessage))
+@if (!string.IsNullOrEmpty(ErrorMessage))
 {
-    <p>@LoginModel.ErrorMessage</p>
+    <p>@ErrorMessage</p>
 }

@@ -14,7 +14,7 @@
     <img src="css/Svg/Fish.svg" class="Kit" alt="Fish">
     <div class="RegisterForm">
         <header class="BaseTxt HeaderTxt">Регистрация</header>
-        <EditForm Model="@RegisterModel" class="Mr_tb_32" method="post" OnValidSubmit="RegistrationUser">
+        <EditForm Model="@RegisterModel" class="Mr_t_32" method="post" OnValidSubmit="RegistrationUser">
             <div class="form-group Mr_b_24 col">
                 <label for="UserName" class="BaseTxt RegularGrayTxt Mr_b_12">Имя или e-mail:</label>
                 <InputText id="Email" class="form-control BaseInput" @bind-Value="RegisterModel.UserName" placeholder="Иван Иванов"/>
@@ -32,8 +32,8 @@
                 <InputText type="password" class="form-control BaseInput" @bind-Value="RegisterModel.ConfirmPassword" placeholder="Введите пароль повторно"></InputText>
                 <ValidationMessage For="@(() => RegisterModel.ConfirmPassword)"/>
             </div>
+            <button type="submit" class="ButtonBase BlueButton Mr_b_24">Создать аккаунт</button>
         </EditForm>
-        <button type="submit" class="ButtonBase BlueButton Mr_b_24">Создать аккаунт</button>
         <button class="ButtonBase LightBlueButton Mr_b_24">Продолжить с Google</button>
         <p class="BaseTxt ClueTxt">
             У вас уже есть учетная запись?

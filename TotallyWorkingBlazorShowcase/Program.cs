@@ -11,7 +11,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnectionString")));
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<LoginModel>();
+/*builder.Services.AddScoped<LoginModel>();
+builder.Services.AddScoped<HomeModel>();*/
 
 var app = builder.Build();
 

@@ -1,0 +1,17 @@
+﻿#pink {
+    color: hotpink;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+}
+.main {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    flex-direction: column;
+    gap: 24px;
+}
