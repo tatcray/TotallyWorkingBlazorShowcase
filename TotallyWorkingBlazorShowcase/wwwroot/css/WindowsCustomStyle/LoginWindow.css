@@ -1,6 +1,5 @@
 body {
-/*    display: flex;*/
-    overflow: hidden;
+    overflow: hidden !important;
     background-color: #2C4F79;
 }
 

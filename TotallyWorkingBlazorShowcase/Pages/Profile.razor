@@ -1,0 +1,32 @@
+﻿@page "/profile"
+@inherits TotallyWorkingBlazorShowcase.Pages.ProfileModel
+
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/Profile.css" rel="stylesheet"> 
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">
+
+<NavBar />
+
+<div class="Row">
+    <div class="colomn">
+        <p>Сменить фотографию</p>
+        <div class="profilePhoto">
+            <img src="css/Svg/ProfileBasePhoto.png" class="photo" >
+        </div>
+    </div>
+    <div class="column">
+        <p class="BaseTxt HeaderTxt">Настройки профиля</p>
+        <p class="BaseTxt RegularGrayTxt">Лицензия</p>
+        <p class="BaseTxt RegularGrayTxt">“Профессиональный“ тариф, действует до 16.03.2024</p>
+        <EditForm Model="profileModel">
+            <label class="BaseTxt RegularGrayTxt">Ф.И.О. владельца лицензии</label>
+            <InputText class="form-control BaseInput" @bind-Value="profileModel.Name" placeholder="IP\DNS-имя + порт"/>
+            
+            <label class="BaseTxt RegularGrayTxt">Local API мониторинга</label>
+            <InputText class="form-control BaseInput" @bind-Value="profileModel.APIMonitoring" placeholder="IP\DNS-имя + порт"/>
+            
+            <label class="BaseTxt RegularGrayTxt">Local API сервис-деска</label>
+            <InputText class="form-control BaseInput" @bind-Value="profileModel.APIServices" placeholder="IP\DNS-имя + порт"/>
+        </EditForm>
+    </div>
+</div>

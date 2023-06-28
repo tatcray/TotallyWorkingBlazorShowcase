@@ -1,0 +1,57 @@
+.defaultClass {
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 624px;
+    background: #F5F6FC;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    
+}
+
+.bm-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    height: 50px;
+    margin: 0;
+    padding: 13px !important;
+}
+
+.bm-title {
+    margin-left: 21px;
+}
+
+.bm-close {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #4A586D;
+    font-size: 38px !important;
+    transform: translateY(-20px);
+}
+
+.bm-title{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #343D4B;
+    
+}
+
+.BaseInput {
+    width: 100%;
+}
+
+.ButtonBase {
+    border-radius: 2px;
+}
+
+.bm-content {
+    padding: 28px 34px 36px;
+}

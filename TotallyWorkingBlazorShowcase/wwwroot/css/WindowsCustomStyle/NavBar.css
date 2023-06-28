@@ -1,0 +1,36 @@
+﻿.nav-bar {
+    width: 232px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2C4F79;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: all 0.5s;
+}
+
+ ul {
+    list-style-type: none;
+}
+
+.navBarBtn {
+    width: 40px;
+    height: 40px;
+    visibility: visible;
+}
+
+.NavBarTxt {
+    color: #FFFFFF;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 17px;
+    margin: 12px 0;
+    white-space: nowrap;
+}
+
+.NavBarTxt:hover {
+    color: #355983;
+    background-color: #FFFFFF;
+    border-radius: 19px 0 0 19px;
+}

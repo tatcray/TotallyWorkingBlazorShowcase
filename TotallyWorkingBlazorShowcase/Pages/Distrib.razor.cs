@@ -2,7 +2,7 @@
 
 namespace TotallyWorkingBlazorShowcase.Pages
 {
-    public class HomeModel : ComponentBase
+    public class DistribModel : ComponentBase
     {
     }
 }

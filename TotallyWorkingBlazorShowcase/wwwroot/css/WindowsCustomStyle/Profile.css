@@ -1,0 +1,21 @@
+﻿.column {
+    gap: 24px;
+}
+.photo {
+    margin: 0 0 0 60px;    
+}
+
+.Row {
+    margin: 0 0 0 252px;
+    display: flex;
+    flex-direction: row;
+}
+
+.ButtonBase {
+    width: 187px;
+    margin: 24px 22px 24px 0;
+}
+
+.mr-l {
+    margin-left: 334px;
+}

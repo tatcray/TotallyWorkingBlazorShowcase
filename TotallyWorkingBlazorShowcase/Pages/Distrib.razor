@@ -1,9 +1,15 @@
-﻿@page "/home"
-@inherits TotallyWorkingBlazorShowcase.Pages.HomeModel
+﻿@page "/distrib"
+@inherits TotallyWorkingBlazorShowcase.Pages.DistribModel
 
 <link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
-<link href="css/WindowsCustomStyle/Home.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/Profile.css" rel="stylesheet">
+
+<NavBar />
+
 <div class="main">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
     <header class="BaseTxt HeaderTxt" id="pink">Ура, вы регнулись</header>
     <div class="Row">
         <img src="css/Img and gif/catUwU.gif" class="Cat" alt="cat">

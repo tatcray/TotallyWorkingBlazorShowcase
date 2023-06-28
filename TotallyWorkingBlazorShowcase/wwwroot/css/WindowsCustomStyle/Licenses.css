@@ -1,10 +1,11 @@
-﻿#pink {
-    color: hotpink;
-}
-
-.Row {
+﻿.Row {
+    margin: 0 0 0 252px;
     display: flex;
     flex-direction: row;
+}
+
+.column {
+    gap: 12px;
 }
 .main {
     display: flex;

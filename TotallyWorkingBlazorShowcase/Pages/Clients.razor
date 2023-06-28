@@ -1,0 +1,29 @@
+﻿@page "/clients"
+@inherits TotallyWorkingBlazorShowcase.Pages.ClientsModel
+
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/componentsStyle/Buttons.css" rel="stylesheet">
+<link href="css/componentsStyle/DropDown.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/Profile.css" rel="stylesheet">
+
+<NavBar />
+
+<div class="main">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+    <header class="BaseTxt HeaderTxt">Список клиентов</header>
+    <div class="Row">
+        <button @onclick="ToggleContent" class="ButtonBase GrayButton">@buttonText</button>
+        <button class="ButtonBase LightBlueButton">Добавить группу</button>
+        <button class="ButtonBase BlueButton">Добавить клиента</button>
+    </div>
+    @if (showImage)
+    {
+        <img class="mr-l" src="css/Svg/test.png" />
+    }
+    else
+    {
+        <p class="mr-l">Место для дерева</p>
+    }
+</div>

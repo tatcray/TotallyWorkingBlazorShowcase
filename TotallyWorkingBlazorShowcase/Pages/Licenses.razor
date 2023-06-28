@@ -1,0 +1,41 @@
+﻿@page "/licenses"
+@using TotallyWorkingBlazorShowcase.Pages.Modals
+@inject IModalService ModalService
+@inherits TotallyWorkingBlazorShowcase.Pages.LicensesModel
+
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/Licenses.css" rel="stylesheet">
+<link href="css/componentsStyle/DropDown.css">
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/Licenses.css">
+<link href="css/Modals/DefaultModal.css" rel="stylesheet">
+
+@inject IModalService Modal;
+<NavBar />
+
+<div class="main">
+    <div class="column">
+        <p class="BaseTxt HeaderTxt">Настройки профиля</p>
+        <p class="BaseTxt RegularGrayTxt">Лицензия</p>
+        <p class="BaseTxt RegularGrayTxt">“Профессиональный“ тариф, действует до 16.03.2024</p>
+        <EditForm Model="licensesModel">
+            <label class="BaseTxt RegularGrayTxt">Тип доступного тарифа:</label>
+            <InputSelect class="select-container" id="mySelect" @bind-Value="licensesModel.SelectedValue">
+                @foreach (var option in licensesModel.Options)
+                {
+                    <option value="@option">@option</option>
+                }
+            </InputSelect>
+        
+        </EditForm>
+        <p class="BaseTxt RegularGrayTxt">Кто использует лицензионный тариф: </p>
+        <button @onclick="@(() => Modal.Show<AddUser>("My Movies", _modalOptions))" class="btn btn-primary">Добавить поьльзователя</button>
+        @code {
+            ModalOptions _modalOptions = new()
+            {
+                Class = "defaultClass"
+            };
+        }
+    </div>
+@*ToDo: при открытии модалки марджинам плохо*@    
+</div>

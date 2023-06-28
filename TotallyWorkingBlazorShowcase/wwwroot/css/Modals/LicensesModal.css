@@ -1,0 +1,19 @@
+﻿.column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rowSpecial {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 24px;
+    justify-content: right;
+    align-items: end;
+}
+
+.ButtonBase {
+    width: 132px;
+}

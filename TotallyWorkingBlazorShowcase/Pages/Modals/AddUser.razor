@@ -1,0 +1,30 @@
+﻿@inherits TotallyWorkingBlazorShowcase.Pages.Modal
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/componentsStyle/Buttons.css" rel="stylesheet">
+<link href="css/Modals/LicensesModal.css" rel="stylesheet">
+
+<SfDialog ShowCloseIcon="true" IsModal="true"  >
+    <DialogTemplates class="column">
+        <Header class="BaseTxt RegularGrayTxt">
+            Имя нового пользователя
+        </Header>
+        <Content>
+            <input class="BaseInput" @bind="_inputValue" type="text" placeholder="Введите имя" />
+        </Content>
+        <div class="rowSpecial">
+            <button class="ButtonBase GrayButton" @onclick="CloseModal">Отменить</button>
+            <button class="ButtonBase BlueButton" @onclick="CloseModal">Сохранить</button>
+        </div>
+    </DialogTemplates>
+</SfDialog>
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+    private string _inputValue;
+        
+    private void CloseModal()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok(_inputValue));
+    }
+}
