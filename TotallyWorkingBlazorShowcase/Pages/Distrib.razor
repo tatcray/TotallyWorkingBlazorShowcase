@@ -1,19 +1,85 @@
 ﻿@page "/distrib"
 @inherits TotallyWorkingBlazorShowcase.Pages.DistribModel
 
+
 <link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
-<link href="css/WindowsCustomStyle/Profile.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/Distrib.css" rel="stylesheet"> 
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">\
+<link href="css/componentsStyle/Buttons.css" rel="stylesheet">
 
 <NavBar />
+<div class="column">
+    <p class="BaseTxt DemoHeaderTxt">Создать дистрибутив</p>
+    <EditForm method="post" Model="distribModel" OnSubmit="SaveDistrib">
+        <label class="BaseTxt RegularGrayTxt">Название организации</label>
+        <InputText class="form-control BaseInput" @bind-Value="distribModel.Name" placeholder="Введите название"/>
+            
+        <label class="BaseTxt RegularGrayTxt">Контактный телефон</label>
+        <InputText class="form-control BaseInput" @bind-Value="distribModel.Phone" placeholder="Введите номер"/>
+            
+        <label class="BaseTxt RegularGrayTxt">Описание</label>
+        <InputText class="form-control BaseInput" @bind-Value="distribModel.Description" placeholder="Кратко опишите услуги, необязательное поле"/>
+            
+        <label class="BaseTxt RegularGrayTxt">Пароль по умолчанию (*опционально)</label>
+        <InputText class="form-control BaseInput" @bind-Value="distribModel.Password" placeholder="Введите пароль"/>
+            
+        <label class="BaseTxt RegularGrayTxt">Добавить ссылку на сайт Ваш сайт технической поддержки (*опционально)</label>
+        <InputText class="form-control BaseInput" @bind-Value="distribModel.Link" placeholder="Введите ссылку на сайт"/>
+            
+        <label class="BaseTxt RegularGrayTxt">Добавить почту  (*опционально)</label>
+        <InputText class="form-control BaseInput" @bind-Value="distribModel.Email" placeholder="Введите почту"/>
+            
+        <button type="submit" class="ButtonBase BlueButton">Сохранить изменения</button>
+    </EditForm>
+            
+    @*<label class="BaseTxt RegularGrayTxt">Добавить фото  (*опционально)</label>
+                        <InputText class="form-control BaseInput" @bind-Value="distribModel.Photo" placeholder="IP\DNS-имя + порт"/> ToDo: хранить фотки*@
+            
+    <div id="Demo">
+        <div class="DemoHeader">
+            <p class="BaseTxt DemoHeaderTxt">Обращение за оказанием технической поддержки</p>
+        </div>
+        <div class="Custom">
+            <img src="css/Img and gif/DemoBackground.png" class="CustomPhoto" alt="">
+            <p class="BaseTxt Mail">@preloadedModel.Email</p>
+            <p class="BaseTxt Phone">@preloadedModel.Phone</p>
+        </div>
+        <div class="littleColumn">
+            <p class="BaseTxt">Чтобы оставить заявку на оказание технической поддержки, заполните анкету и нажмите кнопку “Отправить”</p>
+            <div class="LittleRow">
 
-<div class="main">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-    <header class="BaseTxt HeaderTxt" id="pink">Ура, вы регнулись</header>
-    <div class="Row">
-        <img src="css/Img and gif/catUwU.gif" class="Cat" alt="cat">
-        <img src="css/Img and gif/catUwU.gif" class="Cat" alt="cat">
-        <img src="css/Img and gif/catUwU.gif" class="Cat" alt="cat">
+                <div class="mr-l-32">
+                    <p class="rowTxt BaseTxt">Фамилия</p>
+                    <div class="rowDiv"></div>
+
+                    <p class="rowTxt BaseTxt">Имя</p>
+                    <div class="rowDiv"></div>
+
+                    <p class="rowTxt BaseTxt">Отчество</p>
+                    <div class="rowDiv"></div>
+                </div>
+
+                <div class="mr-l-32">
+                    <p class="BaseTxt rowTxt">Телефон</p>
+                    <div class="rowDiv"></div>
+
+                    <p class="rowTxt BaseTxt">E-mail</p>
+                    <div class="rowDiv"></div>
+
+                    <p class="rowTxt BaseTxt">Организация</p>
+                    <div class="rowDiv"></div>
+                </div>
+            </div>
+            <p class="columnTxt BaseTxt">Причина обращения</p>
+            <div class="columnDiv"></div>
+        </div>
     </div>
 </div>
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDistrib();
+    }
+
+}

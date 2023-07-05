@@ -1,0 +1,108 @@
+﻿.column {
+    margin-left: 346px;
+    margin-right: 114px;
+    
+}
+.photo {
+    margin: 0 0 0 60px;    
+}
+
+.ButtonBase {
+    width: 187px;
+    margin: 24px 22px 24px 0;
+}
+
+.ButtonBase {
+    width: 235px !important;
+    align-items: end !important;
+    horiz-align: right !important;
+}
+
+.BaseInput {
+    margin-top: 14px;
+    margin-bottom: 19px;
+}
+
+#Demo {
+    align-self: center;
+    align-items: start;
+    width: 696px;
+    height: 623px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    background: #F5F6FC;
+}
+
+.DemoHeader {
+    height: 50px;
+    margin-left: 38px;
+    
+}
+
+.DemoHeaderTxt {
+    color: #343D4B;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 13px;
+}
+
+.CustomPhoto {
+    position: absolute;
+    z-index: 6;
+}
+
+.Mail {
+    position: absolute;
+    z-index: 10;  
+    margin-top: 19px;
+    margin-left: 30px;
+    color: #C6E3FF;
+    font-size: 18px;
+}
+
+.Phone {
+    position: absolute;
+    z-index: 10;
+    margin-top: 56px;    
+    margin-left: 30px;
+    color: #FFF;
+    font-size: 18px;
+}
+
+.DemoHeaderTxt{
+    color: #343D4B;
+    font-size: 16px;
+}
+
+.LittleRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.mr-l-32 {
+    margin-left: 32px;
+}
+
+
+.littleColumn{
+    transform: translateY(150px);
+    display: flex;
+    flex-direction: column;
+}
+
+.rowDiv{
+    width: 300px;
+    height: 26px;
+    border-radius: 3px;
+    border: 1px solid #9295A9;
+    background: #FFF;
+}
+
+.columnDiv {
+    border-radius: 3px;
+    border: 1px solid #9295A9;
+    background: #FFF;
+    width: 632px;
+    height: 93px;
+}

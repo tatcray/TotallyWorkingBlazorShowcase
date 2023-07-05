@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using TotallyWorkingBlazorShowcase.Shared.Models;
 
 public class AppDbContext : DbContext
 {
@@ -9,4 +10,5 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<DistribInputModel> Distrib { get; set; }
 }

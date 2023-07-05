@@ -1,5 +1,7 @@
 using System.Security.Cryptography;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using TotallyWorkingBlazorShowcase.Shared.Models;
 
@@ -18,6 +20,9 @@ namespace TotallyWorkingBlazorShowcase.Pages
         public string ErrorMessage { get; set; }
 
         [Inject]
+        private ILocalStorageService localStorage { get; set; }
+
+        [Inject]
         private NavigationManager _navigationManager { get; set; }
 
         public async void UserExistsAsync()
@@ -34,8 +39,14 @@ namespace TotallyWorkingBlazorShowcase.Pages
                 byte[] hash = pbkdf2.GetBytes(hashSize);
                 string hashPassword = Convert.ToBase64String(hash);
 
-                if (users.First().Password.Equals(hashPassword))
+                User user = users.First();
+                if (user.Password.Equals(hashPassword))
                 {
+                    var cookieOptions = new CookieOptions();
+                    cookieOptions.Expires = DateTime.Now.AddDays(1); // Set the expiry date as per your need
+                    
+                    //ToDo: заменить юзер айди на что-то другое (спросить Влада)
+                    await localStorage.SetItemAsStringAsync("userId", user.Id);
                     _navigationManager.NavigateTo("/profile");
                 }
             }
