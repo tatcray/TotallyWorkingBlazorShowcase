@@ -31,7 +31,12 @@
 
     public string RenderTree(TreeNode node)
     {
-        var str = "<ul>" + "<li>" + @node.Name + String.Join("", node.Childrens.Select(child => RenderTree(child))) + "</li>" + "</ul>";
+        var liClass = "Node";
+        if (node.Childrens.Count == 0)
+        {
+            liClass = "Default";
+        }
+        var str = "<ul class=\""+@liClass+"\">" + "<li class=\""+@liClass+"\">" + @node.Name + String.Join("", node.Childrens.Select(child => RenderTree(child))) + "</li>" + "</ul>";
         return str;
     }
     

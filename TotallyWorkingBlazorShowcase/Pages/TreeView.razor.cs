@@ -17,7 +17,7 @@ namespace TotallyWorkingBlazorShowcase.Pages
         public TreeNode treeData = new()
         {
             Name = "User 1",
-            Childrens = new List<TreeNode> { new() { Name = "User 2", Childrens = new List<TreeNode>() }, new() {Name = "USer 3", Childrens = new List<TreeNode>()} }
+            Childrens = new List<TreeNode> { new() { Name = "User 2", Childrens = new List<TreeNode>(){ new() {Name = "USer 5", Childrens = new List<TreeNode>()},  new() {Name = "USer 6", Childrens = new List<TreeNode>(){ new() {Name = "USer 8", Childrens = new List<TreeNode>()}, new() {Name = "USer 9", Childrens = new List<TreeNode>()}}}} }, new() {Name = "USer 3", Childrens = new List<TreeNode>(){ new() {Name = "USer 4", Childrens = new List<TreeNode>()}}}, }
         };
         //{
             /*new TreeNode
