@@ -1,0 +1,85 @@
+﻿@inherits TotallyWorkingBlazorShowcase.Pages.TreeViewModel
+<!-- TreeView.razor -->
+<link href="css/componentsStyle/TextStyle.css" rel="stylesheet">
+<link href="css/WindowsCustomStyle/TreeViewer.css" rel="stylesheet"> 
+<link href="css/componentsStyle/Inputs.css" rel="stylesheet">
+<link href="css/componentsStyle/Buttons.css" rel="stylesheet">
+<ul class="Tree">
+    
+    @((MarkupString)dynamicHtml)
+    @*@foreach (var node in treeData)
+    {
+        <li class="BaseTxt">
+            @#1#onclick="() => ToggleNode(node)#1#
+            <span>@node.Name</span>
+
+            @foreach (var inerNode in node.Children)
+            {
+                <ul class="BaseTxt">
+                    <li >
+                        <span>@inerNode.Name</span>
+                    </li>
+                </ul>
+            }
+        </li>
+    }*@
+</ul>
+
+
+@code {
+    private string dynamicHtml;
+
+    public string RenderTree(TreeNode node)
+    {
+        var str = "<ul>" + "<li>" + @node.Name + String.Join("", node.Childrens.Select(child => RenderTree(child))) + "</li>" + "</ul>";
+        return str;
+    }
+    
+    protected override void OnInitialized()
+    {;
+        dynamicHtml = RenderTree(treeData);
+    }
+}
+
+@*@code
+ {
+      void drawNode()
+     {
+         <ul><li class="example">sdf</li></ul>   
+     }
+
+     protected override async Task OnInitializedAsync()
+     {
+         drawNode();
+     }
+ }*@
+
+@*@foreach (var item in Items.Where(i => i.ParentID == ParentID))
+{
+    <li class="Tree">@item.Name
+        @if (Items.Where(c=>c.ParentID == item.ID).Any())
+        {
+            <ul>
+                <TreeView ParentID="item.ID"/> $1$THIS IS THE MAGIC.#1#
+            </ul>
+        }
+    </li>
+}
+
+@code {
+    [Parameter]
+    public int? ParentID { get; set; }
+
+    [CascadingParameter]
+    List<TreeNode> Items { get; set; }
+}*@
+
+@*@code {/*
+    [Parameter]
+    public List<TreeNode> Nodes { get; set; }*/
+
+    void ToggleNode(TreeNode node)
+    {
+        node.IsExpanded = !node.IsExpanded;
+    }
+}*@

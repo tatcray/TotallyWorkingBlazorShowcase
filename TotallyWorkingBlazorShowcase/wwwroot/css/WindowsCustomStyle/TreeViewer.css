@@ -1,0 +1,16 @@
+﻿
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-left: 20px;
+}
+
+span {
+    cursor: pointer;
+}
+
+.Tree {
+    margin-left: 330px;
+}
