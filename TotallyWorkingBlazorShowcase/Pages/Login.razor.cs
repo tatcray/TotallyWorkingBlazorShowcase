@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using TotallyWorkingBlazorShowcase.Shared.Models;
+using Konscious.Security.Cryptography;
 
 namespace TotallyWorkingBlazorShowcase.Pages
 {
     public class LoginModel : ComponentBase
     {
-        private const int saltSize = 16;
         private const int hashSize = 16;
         private const int iterations = 10000;
         private const string secretPepper = "Secret 16 Byte pepper.";
@@ -35,8 +35,18 @@ namespace TotallyWorkingBlazorShowcase.Pages
             {
                 var usersalt = users.First().Salt;
                 byte[] salt = Convert.FromBase64String(usersalt);
-                Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(Input.Password + secretPepper, salt, iterations);
-                byte[] hash = pbkdf2.GetBytes(hashSize);
+                
+                var password = System.Text.Encoding.UTF8.GetBytes(Input.Password);
+                var argon2 = new Argon2d(password);
+            
+                argon2.DegreeOfParallelism = 16;
+                argon2.MemorySize = 8192;
+                argon2.Iterations = 40;
+
+                argon2.Salt = salt;
+                var hash = argon2.GetBytes(128);
+
+                
                 string hashPassword = Convert.ToBase64String(hash);
 
                 User user = users.First();

@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using TotallyWorkingBlazorShowcase.Shared.Models;
+using Konscious.Security.Cryptography;
 
 namespace TotallyWorkingBlazorShowcase.Pages
 {
@@ -29,6 +30,7 @@ namespace TotallyWorkingBlazorShowcase.Pages
 
         protected async Task RegistrationUser()
         {
+            
             byte[] salt = new byte[saltSize];
             using (RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider())
             {
@@ -39,11 +41,17 @@ namespace TotallyWorkingBlazorShowcase.Pages
             user.Id = Guid.NewGuid().ToString();
             user.UserName = RegisterModel.UserName;
             user.Password = RegisterModel.Password;
-            
             user.Salt = Convert.ToBase64String(salt);
-            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(user.Password + secretPepper, salt, iterations);
-            byte[] hash = pbkdf2.GetBytes(hashSize);
+            var password = System.Text.Encoding.UTF8.GetBytes(user.Password);
+            var argon2 = new Argon2d(password);
             
+            argon2.DegreeOfParallelism = 16;
+            argon2.MemorySize = 8192;
+            argon2.Iterations = 40;
+
+            argon2.Salt = salt;
+            var hash = argon2.GetBytes(128);
+
             user.Password = Convert.ToBase64String(hash);
             
             _context.Users.Add(user);
