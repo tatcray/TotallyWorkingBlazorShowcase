@@ -1,4 +1,4 @@
-﻿public class User
+﻿public class UserDb
 {
     public string Salt { get; set; }
     public string Id { get; set; }

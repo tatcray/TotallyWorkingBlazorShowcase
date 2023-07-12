@@ -9,6 +9,6 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<User> Users { get; set; }
+    public DbSet<UserDb> Users { get; set; }
     public DbSet<DistribInputModel> Distrib { get; set; }
 }

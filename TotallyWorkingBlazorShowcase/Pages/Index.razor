@@ -14,23 +14,23 @@
     <img src="css/Svg/Fish.svg" class="Kit" alt="Fish">
     <div class="RegisterForm">
         <header class="BaseTxt HeaderTxt">Регистрация</header>
-        <EditForm Model="@RegisterModel" class="Mr_t_32" method="post" OnValidSubmit="RegistrationUser">
+        <EditForm Model="@registerModel" class="Mr_t_32" method="post" OnValidSubmit="RegistrationUser">
             <div class="form-group Mr_b_24 col">
                 <label for="UserName" class="BaseTxt RegularGrayTxt Mr_b_12">Имя или e-mail:</label>
-                <InputText id="Email" class="form-control BaseInput" @bind-Value="RegisterModel.UserName" placeholder="Иван Иванов"/>
-                <ValidationMessage For="@(() => RegisterModel.UserName)"/>
+                <InputText id="Email" class="form-control BaseInput" @bind-Value="registerModel.UserName" placeholder="Иван Иванов"/>
+                <ValidationMessage For="@(() => registerModel.UserName)"/>
             </div>
 
             <div class="form-group Mr_b_24 col">
                 <label for="Password" class="BaseTxt RegularGrayTxt Mr_b_12">Пароль:</label>
-                <InputText id="Password" type="password" class="form-control BaseInput" @bind-Value="RegisterModel.Password" placeholder="Придумайте пароль"/>
-                <ValidationMessage For="@(() => RegisterModel.Password)"/>
+                <InputText id="Password" type="password" class="form-control BaseInput" @bind-Value="registerModel.Password" placeholder="Придумайте пароль"/>
+                <ValidationMessage For="@(() => registerModel.Password)"/>
             </div>
 
             <div class="form-group Mr_b_24 col">
                 <label class="BaseTxt RegularGrayTxt Mr_b_12">Повторите пароль:</label>
-                <InputText type="password" class="form-control BaseInput" @bind-Value="RegisterModel.ConfirmPassword" placeholder="Введите пароль повторно"></InputText>
-                <ValidationMessage For="@(() => RegisterModel.ConfirmPassword)"/>
+                <InputText type="password" class="form-control BaseInput" @bind-Value="registerModel.ConfirmPassword" placeholder="Введите пароль повторно"></InputText>
+                <ValidationMessage For="@(() => registerModel.ConfirmPassword)"/>
             </div>
             <button type="submit" class="ButtonBase BlueButton Mr_b_24">Создать аккаунт</button>
         </EditForm>
