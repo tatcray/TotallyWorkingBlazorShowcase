@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using TotallyWorkingBlazorShowcase.Pages;
+using TotallyWorkingBlazorShowcase.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 builder.Services.AddBlazoredModal();
 builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddScoped<IUserInterface, UserService>();
 
 
 var app = builder.Build();

@@ -1,13 +1,14 @@
 ﻿using System.Security.Cryptography;
 using Konscious.Security.Cryptography;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TotallyWorkingBlazorShowcase.Services;
 using TotallyWorkingBlazorShowcase.Shared.Models;
 
 namespace TotallyWorkingBlazorShowcase.Services
 {
-    public class UserService
+    public class UserService: IUserInterface
     {
         private const int saltSize = 16;
 
@@ -64,15 +65,18 @@ namespace TotallyWorkingBlazorShowcase.Services
         public async Task<ServisResponse> UserLogin(LoginInputModel inputModel)
         {
             var UserName = inputModel.UserName;
-
+            
             var users = _context.Users.Where(user => user.UserName.Equals(UserName));
+
             /*return users.Any();*/
-            var usersalt = users.First().Salt;
+            if (users.Count() > 0)
+            {
+                var usersalt = users.First().Salt;
                 byte[] salt = Convert.FromBase64String(usersalt);
-                
+
                 var password = System.Text.Encoding.UTF8.GetBytes(inputModel.Password);
                 var argon2 = new Argon2d(password);
-            
+
                 argon2.DegreeOfParallelism = 16;
                 argon2.MemorySize = 8192;
                 argon2.Iterations = 40;
@@ -80,20 +84,25 @@ namespace TotallyWorkingBlazorShowcase.Services
                 argon2.Salt = salt;
                 var hash = argon2.GetBytes(128);
 
-                
+
                 string hashPassword = Convert.ToBase64String(hash);
 
                 UserDb userDb = users.First();
-                
-                if (userDb.Password.Equals(hashPassword))
-                {
-                    return new ServisResponse()
-                    {
-                        StatusCode = 200
-                    };
-                }
 
-                return new ServisResponse()
+                if (!users.IsNullOrEmpty())
+                {
+                    if (userDb.Password.Equals(hashPassword))
+                    {
+                        return new ServisResponse()
+                        {
+                            additionalInfo = new Dictionary<string, string>() { { "userId", userDb.Id } },
+                            StatusCode = 200
+                        };
+                    }
+                }
+            }
+
+            return new ServisResponse()
                 {
                     StatusCode = 400
                 };

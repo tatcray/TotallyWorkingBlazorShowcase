@@ -14,18 +14,18 @@ namespace TotallyWorkingBlazorShowcase.Pages
 
         [Inject]
         private ILogger<RegisterModel> logger { get; set; }
-        
-        [Inject]
-        private  AppDbContext _context { get; set; }
-        
+
         [Inject]
         private NavigationManager _navigationManager { get; set; }
 
         protected RegisterModel registerModel = new();
 
+        [Inject] 
+        private IUserInterface _userInterface { get; set; }
+
         protected async Task RegistrationUser()
         {
-            var codeResponse = await new UserService(_context).SaveUser(registerModel);
+            var codeResponse = await _userInterface.SaveUser(registerModel);
             if (codeResponse.StatusCode == 200)
             {
                 _navigationManager.NavigateTo("/login");
